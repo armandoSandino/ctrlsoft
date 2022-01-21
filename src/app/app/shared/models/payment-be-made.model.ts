@@ -1,4 +1,4 @@
-export class PaymentMade {
+export class PaymentBeMade {
 
     cConcepto?:string;
     cFechaPago?:string;
