@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiURL: 'http://201.149.45.229:1414/SuautoOnline/rest/SuautoOnlineService/'
 };
 
 /*
