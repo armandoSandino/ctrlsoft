@@ -21,7 +21,6 @@ export interface StatementElement {
 })
 export class AppComponent {
   
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   displayedColumns: string[] = ['id', 'nContribution', 'concept', 'dueDate', 'paymentDate', 'amount' ];
   ELEMENT_DATA: StatementElement[] = [];
   paymentMade = [];
