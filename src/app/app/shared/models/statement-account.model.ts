@@ -27,11 +27,11 @@ export class StatementAccount {
     PagosPorRealizar: any [];
     PagosRealizados:any [];
 
-    constructor(json?: any ){
+    constructor(json?: any ) {
 
     }
 }
 
 export interface ResponseStatementAccount {
-    statementAccount: StatementAccount[];
+    response?:  StatementAccount[];
 }
