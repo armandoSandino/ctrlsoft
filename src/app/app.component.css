@@ -11,3 +11,11 @@
   table {
     width: 100%;
   }
+
+  .c_point_type  {
+    background-color: rgb(60, 179, 113) !important;
+  }
+
+  .point_type  {
+    background-color: white !important;
+  }

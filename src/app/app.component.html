@@ -6,14 +6,6 @@
         Consulta de Contrato
       </h3>
     </div>
-<!--
-    <div class="col col-md-6 p-1" style="border: 2px solid red;">
-
-    </div>
-    <div class="col col-md-6 p-1" style="border: 2px solid red;">
-
-    </div>
--->
   </div>
 
   <div class="row mt-4">
@@ -36,7 +28,7 @@
     </div>
 
     <div class="col col-md-2 p-2" style="border: 2px solid red;">
-      <button class="example-full-width"  mat-raised-button color="primary">Buscar</button>
+      <button class="example-full-width"  mat-raised-button color="primary">Excel</button>
     </div>
   </div>
 
@@ -51,7 +43,7 @@
         <strong>
           Nombres:
        </strong>
-       <span>Juan</span> 
+       <span> {{ statementAccount?.opcNombre ? statementAccount?.opcNombre : '---' }} </span> 
     </p>
     </div>
     <div class="col col-md-12 mt-1">
@@ -59,7 +51,7 @@
         <strong>
           Estatus:
        </strong>
-       <span>Juan</span> 
+       <span> {{ statementAccount?.opcEstatus ? statementAccount?.opcEstatus : '---' }} </span> 
       </p>
     </div>
     <div class="col col-md-12 mt-1">
@@ -67,7 +59,7 @@
         <strong>
           Plan:
        </strong>
-       <span>Juan</span> 
+       <span> {{ statementAccount?.opcPlan ? statementAccount?.opcPlan : '---' }} </span> 
       </p>
     </div>
     <div class="col col-md-12 mt-1">
@@ -75,7 +67,7 @@
         <strong>
           Fecha Contrato:
        </strong>
-       <span>Juan</span> 
+       <span> {{ statementAccount?.opcFechaContrato ? statementAccount?.opcFechaContrato : '---' }} </span> 
       </p>
     </div>
   </div>
@@ -88,34 +80,48 @@
     </div>
 
     <div class="col col-md-12">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="paymentMade" class="mat-elevation-z8">
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-      
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"
+          [id]="element?.cTipo"
+          [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }">
+          {{ element?.id }}
+          </td>
         </ng-container>
       
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <!-- nContribution Column -->
+        <ng-container matColumnDef="nContribution">
+          <th mat-header-cell *matHeaderCellDef> No. Aportación </th>
+          <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }"> {{element?.nContribution }} </td>
         </ng-container>
       
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <!-- concept Column -->
+        <ng-container matColumnDef="concept">
+          <th mat-header-cell *matHeaderCellDef> Concepto </th>
+          <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }"> {{element?.concept }} </td>
+        </ng-container>
+
+        <!-- dueDate Column -->
+        <ng-container matColumnDef="dueDate">
+          <th mat-header-cell *matHeaderCellDef> Vencimiento </th>
+          <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }"> {{element?.dueDate }} </td>
+        </ng-container>
+
+        <!-- paymentDate Column -->
+        <ng-container matColumnDef="paymentDate">
+          <th mat-header-cell *matHeaderCellDef> Fecha Pago </th>
+          <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }"> {{element?.paymentDate }} </td>
+        </ng-container>
+
+        <!-- amount Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Monto </th>
+          <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': element?.cTipo === 'Puntual' ? '#3CB371' : 'white' }"> {{element?.amount }} </td>
         </ng-container>
       
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
       
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
